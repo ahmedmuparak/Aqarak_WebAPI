@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36202.13 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aqarak_WebAPI", "Aqarak_WebAPI\Aqarak_WebAPI.csproj", "{B4A385D2-9DDA-4610-908A-EC72ABFA54BB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B4A385D2-9DDA-4610-908A-EC72ABFA54BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4A385D2-9DDA-4610-908A-EC72ABFA54BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4A385D2-9DDA-4610-908A-EC72ABFA54BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4A385D2-9DDA-4610-908A-EC72ABFA54BB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {683688B8-411D-4155-A1F0-80712BC3F68C}
+	EndGlobalSection
+EndGlobal
