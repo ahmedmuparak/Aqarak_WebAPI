@@ -32,6 +32,96 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Aqarak_WebAPI.Aqarak.API.Controllers.ChatController",
+    "Method": "Send",
+    "RelativePath": "api/Chat",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Aqarak_WebAPI.DTOs.SendMessageDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Aqarak_WebAPI.Aqarak.API.Controllers.ChatController",
+    "Method": "Index",
+    "RelativePath": "api/Chat",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "conversationId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Aqarak_WebAPI.Aqarak.API.Controllers.ConversationController",
+    "Method": "GetConversations",
+    "RelativePath": "api/Conversation",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Aqarak_WebAPI.Aqarak.API.Controllers.ConversationController",
+    "Method": "CreateOrGetConversation",
+    "RelativePath": "api/Conversation",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "propertyId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Aqarak_WebAPI.Aqarak.API.Controllers.ConversationController",
+    "Method": "GetConversation",
+    "RelativePath": "api/Conversation/{conversationId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "conversationId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Aqarak_WebAPI.Aqarak.API.Controllers.ConversationController",
+    "Method": "DeleteConversation",
+    "RelativePath": "api/Conversation/{conversationId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "conversationId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Aqarak_WebAPI.Aqarak.API.Controllers.FavoriteController",
     "Method": "Add",
     "RelativePath": "api/Favorite",

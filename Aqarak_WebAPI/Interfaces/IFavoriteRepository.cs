@@ -1,4 +1,4 @@
-﻿namespace Aqarak_WebAPI.Repository
+﻿namespace Aqarak_WebAPI.Interfaces
 {
     public interface IFavoriteRepository
     {

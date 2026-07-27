@@ -1,4 +1,6 @@
-﻿namespace Aqarak_WebAPI.Repository
+﻿using Aqarak_WebAPI.Interfaces;
+
+namespace Aqarak_WebAPI.Repository
 {
     public class PropertyRepository : IPropertyRepository
     {

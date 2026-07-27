@@ -129,6 +129,40 @@ namespace Aqarak_WebAPI.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Aqarak_WebAPI.Models.Conversation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CustomerId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("OwnerId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("PropertyId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("OwnerId");
+
+                    b.HasIndex("PropertyId", "CustomerId", "OwnerId")
+                        .IsUnique();
+
+                    b.ToTable("Conversations");
+                });
+
             modelBuilder.Entity("Aqarak_WebAPI.Models.FavoriteList", b =>
                 {
                     b.Property<int>("Id")
@@ -308,6 +342,41 @@ namespace Aqarak_WebAPI.Migrations
                             Id = 27,
                             Name = "سوهاج"
                         });
+                });
+
+            modelBuilder.Entity("Aqarak_WebAPI.Models.Message", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<int>("ConversationId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsRead")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SenderId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("SentAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ConversationId");
+
+                    b.HasIndex("SenderId");
+
+                    b.ToTable("Messages");
                 });
 
             modelBuilder.Entity("Aqarak_WebAPI.Models.Property", b =>
@@ -511,6 +580,33 @@ namespace Aqarak_WebAPI.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Aqarak_WebAPI.Models.Conversation", b =>
+                {
+                    b.HasOne("Aqarak_WebAPI.Models.AppUser", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Aqarak_WebAPI.Models.AppUser", "Owner")
+                        .WithMany()
+                        .HasForeignKey("OwnerId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Aqarak_WebAPI.Models.Property", "Property")
+                        .WithMany()
+                        .HasForeignKey("PropertyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("Owner");
+
+                    b.Navigation("Property");
+                });
+
             modelBuilder.Entity("Aqarak_WebAPI.Models.FavoriteList", b =>
                 {
                     b.HasOne("Aqarak_WebAPI.Models.Property", "Property")
@@ -528,6 +624,25 @@ namespace Aqarak_WebAPI.Migrations
                     b.Navigation("Property");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Aqarak_WebAPI.Models.Message", b =>
+                {
+                    b.HasOne("Aqarak_WebAPI.Models.Conversation", "Conversation")
+                        .WithMany("Messages")
+                        .HasForeignKey("ConversationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Aqarak_WebAPI.Models.AppUser", "Sender")
+                        .WithMany()
+                        .HasForeignKey("SenderId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Conversation");
+
+                    b.Navigation("Sender");
                 });
 
             modelBuilder.Entity("Aqarak_WebAPI.Models.Property", b =>
@@ -622,6 +737,11 @@ namespace Aqarak_WebAPI.Migrations
             modelBuilder.Entity("Aqarak_WebAPI.Models.Category", b =>
                 {
                     b.Navigation("Properties");
+                });
+
+            modelBuilder.Entity("Aqarak_WebAPI.Models.Conversation", b =>
+                {
+                    b.Navigation("Messages");
                 });
 
             modelBuilder.Entity("Aqarak_WebAPI.Models.Governorate", b =>

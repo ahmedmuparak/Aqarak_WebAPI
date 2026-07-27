@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-
-namespace Aqarak_WebAPI.Models
+﻿namespace Aqarak_WebAPI.Models
 {
     public class APIContext : IdentityDbContext<AppUser>
     {
@@ -15,6 +12,8 @@ namespace Aqarak_WebAPI.Models
         public DbSet<FavoriteList> FavoriteLists { get; set; }
         public DbSet<Governorate> Governorates { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Conversation> Conversations { get; set; }
+        public DbSet<Message> Messages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -32,6 +31,32 @@ namespace Aqarak_WebAPI.Models
                 .HasForeignKey(f => f.PropertyId)
                 .OnDelete(DeleteBehavior.NoAction);
 
+            modelBuilder.Entity<Conversation>()
+    .HasOne(c => c.Customer)
+    .WithMany()
+    .HasForeignKey(c => c.CustomerId)
+    .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Conversation>()
+                .HasOne(c => c.Owner)
+                .WithMany()
+                .HasForeignKey(c => c.OwnerId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Message>()
+                .HasOne(m => m.Sender)
+                .WithMany()
+                .HasForeignKey(m => m.SenderId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Conversation>()
+                .HasIndex(c => new
+                {
+                    c.PropertyId,
+                    c.CustomerId,
+                    c.OwnerId
+                })
+    .IsUnique();
 
             modelBuilder.Entity<Category>().HasData(new Category[]
 {

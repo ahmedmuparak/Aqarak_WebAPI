@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-
-namespace Aqarak_WebAPI.Models
+﻿namespace Aqarak_WebAPI.Models
 {
     public class AppUser : IdentityUser
     {

@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Aqarak_WebAPI.Models
+﻿namespace Aqarak_WebAPI.Models
 {
     public class Category
     {

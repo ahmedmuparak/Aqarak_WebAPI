@@ -1,7 +1,4 @@
-﻿using Aqarak_WebAPI.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Security.Claims;
+﻿using Aqarak_WebAPI.Interfaces;
 
 namespace Aqarak_WebAPI.Repository
 {

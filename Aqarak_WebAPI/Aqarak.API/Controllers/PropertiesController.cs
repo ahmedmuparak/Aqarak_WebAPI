@@ -1,13 +1,5 @@
-﻿using Aqarak_WebAPI.DTOs;
-using Aqarak_WebAPI.Models;
-using Aqarak_WebAPI.Repository;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Aqarak_WebAPI.Interfaces;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Aqarak_WebAPI.Aqarak.API.Controllers
 {
@@ -156,7 +148,7 @@ namespace Aqarak_WebAPI.Aqarak.API.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             var UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var Property =await repo.GetbyId(id);
+            var Property = await repo.GetbyId(id);
 
             if (Property == null)
                 return NotFound();

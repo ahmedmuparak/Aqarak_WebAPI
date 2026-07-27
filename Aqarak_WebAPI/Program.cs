@@ -1,6 +1,8 @@
-﻿using Aqarak_WebAPI.Models;
+﻿using Aqarak_WebAPI.Hubs;
+using Aqarak_WebAPI.Interfaces;
 using Aqarak_WebAPI.Models;
-using Aqarak_WebAPI.Repository;
+using Aqarak_WebAPI.Models;
+using Aqarak_WebAPI.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -56,7 +58,13 @@ namespace WebAPI_ITI
 
             builder.Services.AddScoped<IPropertyRepository, PropertyRepository>();
             builder.Services.AddScoped<IFavoriteRepository, FavoriteRepository>();
+            builder.Services.AddScoped<IConversationRepository, ConversationRepository>();
+            builder.Services.AddScoped<IConversationService, ConversationService>();
+            builder.Services.AddScoped<IMessageRepository, MessageRepository>();
+            builder.Services.AddScoped<IMessageService, MessageService>();
 
+
+            builder.Services.AddSignalR();
             // Swagger
             builder.Services.AddSwaggerGen(c =>
             {
@@ -114,6 +122,7 @@ namespace WebAPI_ITI
             app.UseAuthorization();
 
             app.MapControllers();
+            app.MapHub<ChatHub>("/chatHub");
             app.Run();
         }
     }

@@ -1,8 +1,4 @@
-﻿using Aqarak_WebAPI.Models;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-
-namespace Aqarak_WebAPI.Aqarak.API.Controllers
+﻿namespace Aqarak_WebAPI.Aqarak.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

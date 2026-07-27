@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\API\\Aqarak_WebAPI\\Aqarak_WebAPI\\Aqarak_WebAPI.csproj": {}
+    "D:\\ASP .NET\\API\\Aqarak_WebAPI\\Aqarak_WebAPI\\Aqarak_WebAPI.csproj": {}
   },
   "projects": {
-    "D:\\API\\Aqarak_WebAPI\\Aqarak_WebAPI\\Aqarak_WebAPI.csproj": {
+    "D:\\ASP .NET\\API\\Aqarak_WebAPI\\Aqarak_WebAPI\\Aqarak_WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\API\\Aqarak_WebAPI\\Aqarak_WebAPI\\Aqarak_WebAPI.csproj",
+        "projectUniqueName": "D:\\ASP .NET\\API\\Aqarak_WebAPI\\Aqarak_WebAPI\\Aqarak_WebAPI.csproj",
         "projectName": "Aqarak_WebAPI",
-        "projectPath": "D:\\API\\Aqarak_WebAPI\\Aqarak_WebAPI\\Aqarak_WebAPI.csproj",
+        "projectPath": "D:\\ASP .NET\\API\\Aqarak_WebAPI\\Aqarak_WebAPI\\Aqarak_WebAPI.csproj",
         "packagesPath": "C:\\Users\\Ahmed Mubarak\\.nuget\\packages\\",
-        "outputPath": "D:\\API\\Aqarak_WebAPI\\Aqarak_WebAPI\\obj\\",
+        "outputPath": "D:\\ASP .NET\\API\\Aqarak_WebAPI\\Aqarak_WebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -70,6 +70,10 @@
               "target": "Package",
               "version": "[9.0.5, )"
             },
+            "Microsoft.AspNetCore.SignalR.Client": {
+              "target": "Package",
+              "version": "[9.0.18, )"
+            },
             "Microsoft.EntityFrameworkCore.Proxies": {
               "target": "Package",
               "version": "[9.0.12, )"
@@ -112,7 +116,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.312/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
