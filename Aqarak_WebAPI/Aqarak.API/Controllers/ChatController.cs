@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Aqarak_WebAPI.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Aqarak_WebAPI.Aqarak.API.Controllers
@@ -10,11 +12,13 @@ namespace Aqarak_WebAPI.Aqarak.API.Controllers
     {
         private readonly IConversationService conversationService;
         private readonly IMessageService messageService;
+        private readonly UserManager<AppUser> userManager;
 
-        public ChatController(IConversationService conversationService, IMessageService messageService) 
+        public ChatController(IConversationService conversationService, IMessageService messageService, UserManager<AppUser> userManager) 
         {
             this.conversationService = conversationService;
             this.messageService = messageService;
+            this.userManager = userManager;
         }
 
         [HttpPost]
@@ -46,6 +50,19 @@ namespace Aqarak_WebAPI.Aqarak.API.Controllers
                 return NotFound();
 
             return Ok (conversation);
+        }
+
+        [HttpDelete("{messageId}")]
+        [Authorize]
+        public async Task<IActionResult> DeleteMessage(int messageId)
+        {
+            var userId = userManager.GetUserId(User);
+            var result = await messageService.DeleteMessageAsync(messageId, userId);
+
+            if (!result)
+                return NotFound();
+
+            return NoContent();
         }
     }
 }

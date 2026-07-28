@@ -64,6 +64,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Aqarak_WebAPI.Aqarak.API.Controllers.ChatController",
+    "Method": "DeleteMessage",
+    "RelativePath": "api/Chat/{messageId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "messageId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Aqarak_WebAPI.Aqarak.API.Controllers.ConversationController",
     "Method": "GetConversations",
     "RelativePath": "api/Conversation",

@@ -27,5 +27,10 @@
         {
             await context.SaveChangesAsync();
         }
+
+        public async Task<Message?> GetByIdAsync(int messageId)
+        {
+            return await context.Messages.FindAsync(messageId);
+        }
     }
 }

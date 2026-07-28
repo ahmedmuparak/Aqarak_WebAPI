@@ -5,5 +5,6 @@
         Task<IEnumerable<Message>> GetConversationMessagesAsync(int conversationId);
         Task AddAsync(Message message);
         Task SaveAsync();
+        Task<Message?> GetByIdAsync(int messageId);
     }
 }

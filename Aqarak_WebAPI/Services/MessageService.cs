@@ -7,11 +7,13 @@ namespace Aqarak_WebAPI.Services
     {
         private readonly IMessageRepository messageRepository;
         private readonly IHubContext<ChatHub> hubContext;
+        private readonly APIContext context;
 
-        public MessageService(IMessageRepository messageRepository ,IHubContext<ChatHub> hubContext)
+        public MessageService(IMessageRepository messageRepository ,IHubContext<ChatHub> hubContext ,APIContext context)
         {
             this.messageRepository = messageRepository;
             this.hubContext = hubContext;
+            this.context = context;
         }
 
         public async Task SendMessageAsync(int conversationId,string senderId,string content)
@@ -53,6 +55,22 @@ namespace Aqarak_WebAPI.Services
                 Content = m.Content,
                 SentAt = m.SentAt
             });
+        }
+
+        public async Task<bool> DeleteMessageAsync(int messageId, string userId)
+        {
+            var message = await context.Messages                
+                .FirstOrDefaultAsync(m =>
+                    m.Id == messageId &&
+                    m.SenderId == userId);
+
+            if (message == null)
+                return false;
+
+            context.Messages.Remove(message);
+            await context.SaveChangesAsync();
+
+            return true;
         }
     }
 }

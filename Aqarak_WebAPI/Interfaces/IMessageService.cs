@@ -4,5 +4,6 @@
     {
         Task SendMessageAsync(int conversationId, string senderId, string content);
         Task<IEnumerable<MessageDTO>> GetMessagesAsync(int conversationId);
+        Task<bool> DeleteMessageAsync(int messageId, string userId);
     }
 }
