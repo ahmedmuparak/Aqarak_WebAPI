@@ -1,4 +1,4 @@
-# 🏡 Aqarak – Real Estate Web API
+#  Aqarak – Real Estate Web API
 
 Aqarak is a RESTful Real Estate Web API built with **ASP.NET Core**, providing a scalable and maintainable backend for real estate applications. The API enables users to browse properties, manage listings, upload property images, save favorite properties, and communicate directly with other users through a real-time chat system.
 
